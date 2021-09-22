@@ -23,6 +23,11 @@ app.use(express.static("public"));
 //     console.log(message);
 //   });
 
+app.post("/api/workouts", (req, res) => {
+  res.json("i don't know"); 
+
+});
+
 app.get("/exercise", (req, res) => {
 res.sendFile(path.join(__dirname + "/public/exercise.html"));
 
