@@ -5,7 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 
 const PORT = process.env.PORT || 3000;
-// const db = require("./models");
+const db = require("./models/resistance");
 const app = express();
 
 app.use(logger("dev"));
@@ -13,20 +13,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workouts", { useNewUrlParser: true });
 
-// db.Workout.create({ name: "Workout Tracker" })
-//   .then(dbWorkout => {
-//     console.log(dbWorkout);
-//   })
-//   .catch(({message}) => {
-//     console.log(message);
-//   });
+db.Resistance.create({ name: "Workout Tracker" })
+  .then(dbResistance => {
+    console.log(dbResistance);
+  })
+  .catch(({message}) => {
+    console.log(message);
+  });
 
-app.post("/api/workouts", (req, res) => {
-  res.json("i don't know"); 
 
-});
 
 app.get("/exercise", (req, res) => {
 res.sendFile(path.join(__dirname + "/public/exercise.html"));
