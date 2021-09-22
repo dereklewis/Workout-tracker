@@ -1,32 +1,38 @@
 const express = require("express");
 // const mongojs = require("mongojs");
 const logger = require("morgan");
-// const path = require("path");
+const path = require("path");
+const mongoose = require("mongoose");
 
+const PORT = process.env.PORT || 3000;
+// const db = require("./models");
 const app = express();
 
 app.use(logger("dev"));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 app.use(express.static("public"));
 
-//example of database variables to make the database connection below
-// const databaseUrl = "notetaker";
-// const collections = ["notes"];
+// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/populate", { useNewUrlParser: true });
 
+// db.Workout.create({ name: "Workout Tracker" })
+//   .then(dbWorkout => {
+//     console.log(dbWorkout);
+//   })
+//   .catch(({message}) => {
+//     console.log(message);
+//   });
 
-// const db = mongojs(databaseUrl, collections);
+app.get("/exercise", (req, res) => {
+res.sendFile(path.join(__dirname + "/public/exercise.html"));
 
-//database connection using the variables above
-// db.on("error", error => {
-//   console.log("Database Error:", error);
-// });
+});
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "./public/index.html"));
 });
+
+
 
 
 
