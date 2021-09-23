@@ -1,4 +1,4 @@
-// module.exports = {
-//   Resistance: require("./resistance"),
-//   Cardio: require("./resistance")
-// };
+module.exports = {
+  Resistance: require("./resistance"),
+  Cardio: require("./resistance")
+};
