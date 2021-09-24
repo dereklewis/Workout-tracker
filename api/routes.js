@@ -1,17 +1,26 @@
-
 const express = require("express");
-const Resistance = require("../models/resistance");
+let router = express.Router();
 
+// app.put("/api/workouts", ({ body }, res) => {
+//   Workout.create(body)
+//     .then((Workout) => {
+//       res.json(Workout);
+//     })
+//     .catch((err) => {
+//       res.json(err);
+//     });
+// });
 
-app.post("/api/workouts", ({ body }, res) => {
-  db.Resistance.create(body)
-    .then(Tracker => {
-      console.log(Resistance);
-      res.json(Tracker);
+app.post("/workouts", ({ body }, res) => {
+  Workout.create(body)
+    .then((Workout) => {
+      res.json(Workout);
     })
-    .catch(err => {
+    .catch((err) => {
       res.json(err);
     });
 });
 
-module.exports = Resistance;
+
+
+module.exports = router;
