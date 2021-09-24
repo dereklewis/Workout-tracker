@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 
 const PORT = process.env.PORT || 3000;
-const Resistance = require("./models/resistance");
+const Workout = require("./models/workout");
 const app = express();
 
 app.use(logger("dev"));
@@ -20,26 +20,19 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trackerdb", {
     useFindAndModify: false,
 });
 
-Resistance.create({ name: "Resistance" })
-  .then(dbResistance => {
-    console.log(dbResistance);
+Workout.create({ name: "Workout" })
+  .then(Workout => {
+    console.log(Workout);
   })
   .catch(({ message }) => {
     console.log(message);
   });
 
-  // Cardio.create({ name: "Cardio" })
-  // .then(dbResistance => {
-  //   console.log(dbResistance);
-  // })
-  // .catch(({ message }) => {
-  //   console.log(message);
-  // });
 
 // app.post("/api/workouts", ({ body }, res) => {
-//   Resistance.create(body)
+//   Workout.create(body)
 //     .then(Tracker => {
-//       console.log(Resistance);
+//       console.log(Workout);
 //       res.json(Tracker);
 //     })
 //     .catch(err => {

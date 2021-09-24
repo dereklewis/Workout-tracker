@@ -1,6 +1,6 @@
 
 const express = require("express");
-const Resistance = require("../../models/resistance");
+const Resistance = require("../models/resistance");
 
 
 app.post("/api/workouts", ({ body }, res) => {
