@@ -17,25 +17,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trackerdb", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: false,
 });
 
-
-
-
-
-
-// Workout.create({ name: "Workout" })
-//   .then((Workout) => {
-//     console.log(Workout);
-//   })
-//   .catch(({ message }) => {
-//     console.log(message);
-//   });
 
 
 
