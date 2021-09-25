@@ -1,7 +1,28 @@
 const express = require("express");
-let router = express.Router();
+const router = express.Router();
+// const Workout = require("../models/workout");
+// const Exercise = require("../public/exercise");
+// const api = require("../public/api");
 
-// app.put("/api/workouts", ({ body }, res) => {
+
+
+router.post("/workouts", async (req, res) => {
+    console.info(req.body)
+})
+
+// router.post("/workouts", async ({ body }, res) => {
+//   const workOut = new Workout(body);
+// //   workOut.initExercise();
+//   Workout.create(workOut)
+//     .then((workout) => {
+//       console.log(workout);
+//     })
+//     .catch(({ message }) => {
+//       console.log(message);
+//     });
+// });
+
+// router.post("/workouts", ({ body }, res) => {
 //   Workout.create(body)
 //     .then((Workout) => {
 //       res.json(Workout);
@@ -10,17 +31,5 @@ let router = express.Router();
 //       res.json(err);
 //     });
 // });
-
-app.post("/workouts", ({ body }, res) => {
-  Workout.create(body)
-    .then((Workout) => {
-      res.json(Workout);
-    })
-    .catch((err) => {
-      res.json(err);
-    });
-});
-
-
 
 module.exports = router;

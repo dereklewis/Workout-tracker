@@ -4,12 +4,14 @@ const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./api/routes");
 
-app.use("/api", routes);
+
+
 
 const PORT = process.env.PORT || 3000;
 const Workout = require("./models/workout");
 const app = express();
 
+app.use("/api", routes);
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,13 +24,20 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trackerdb", {
   useFindAndModify: false,
 });
 
-Workout.create({ name: "Workout" })
-  .then((Workout) => {
-    console.log(Workout);
-  })
-  .catch(({ message }) => {
-    console.log(message);
-  });
+
+
+
+
+
+// Workout.create({ name: "Workout" })
+//   .then((Workout) => {
+//     console.log(Workout);
+//   })
+//   .catch(({ message }) => {
+//     console.log(message);
+//   });
+
+
 
 app.get("/exercise", (req, res) => {
   res.sendFile(path.join(__dirname + "/public/exercise.html"));
