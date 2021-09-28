@@ -3,9 +3,10 @@ const router = express.Router();
 const Workout = require("../models/workout");
 
 router.post("/workouts/", async ({ body }, res) => {
-  Workout.create(body)
-    .then((workouts) => {
-      res.json(workouts);
+  
+  Workout.create({ exercises: req.body.exercises })
+    .then((data) => {
+      res.json(data);
     })
     .catch((err) => {
       res.status(400).json(err);
