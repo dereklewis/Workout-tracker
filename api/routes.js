@@ -13,19 +13,21 @@ router.post("/workouts/", async ({body}, res) => {
     });
 
 });
+
 router.put("/workouts/:id", async (req, res) => {
   Workout.findByIdAndUpdate(
     { _id: req.params.id },
-    { $push: { exercises: req.body } },
+    { $push: { exercises: req.body } }, { new: true }), 
     function (err, result) {
       if (err) {
         res.send(err);
       } else {
-        res.json(workouts);
+        res.json(Workout.findByIdAndUpdate());
       }
     }
-  );
+  ;
 });
+
 router.get("/workouts", (req, res) => {
     Workout.find({})
     .then(workouts => {
