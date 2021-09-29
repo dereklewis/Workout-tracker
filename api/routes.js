@@ -8,7 +8,7 @@ router.post("/workouts/", async (req, res) => {
 
     .then((workouts) => {
       res.json(workouts);
-      console.log(workouts);
+      // console.log(workouts);
     })
     .catch((err) => {
       res.status(400).json(err);
@@ -18,14 +18,15 @@ router.post("/workouts/", async (req, res) => {
 router.put("/workouts/:id", async (req, res) => {
   Workout.findByIdAndUpdate(
     { _id: req.params.id },
-    { $push: { exercises: req.body } },
+    { $push: { exercises: req.exercises } },
     { new: true }
   ),
     function (err, result) {
       if (err) {
         res.send(err);
       } else {
-        res.json(Workout.findByIdAndUpdate());
+        res.json(workouts);
+        console.log(workouts);
       }
     };
 });
