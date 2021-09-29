@@ -2,42 +2,18 @@ const express = require("express");
 const router = express.Router();
 const Workout = require("../models/workout");
 
-router.post("/workouts/", async ({ body }, res) => {
-  
-  Workout.create({ exercises: req.body.exercises })
-    .then((data) => {
-      res.json(data);
+router.post("/workouts/", async (req, res) => {
+  console.log(req.body);
+  Workout.create({})
+
+    .then((workouts) => {
+      res.json(workouts);
+      console.log(workouts);
     })
     .catch((err) => {
       res.status(400).json(err);
     });
 });
-
-// router.post("/workouts/", async ({ body }, res) => {
-//     const newWorkout = new Workout;
-//     Workout.create({
-//       date: req.body,
-//       exercises: {
-//         type: req.body.type,
-//         name: req.body.name,
-//         duration: req.body.duration,
-//         weight: req.body.weight,
-//         reps: req.body.reps,
-//         sets: req.body.sets,
-//         duration: req.body.duration,
-//         distance: req.body.distance,
-//       }
-//     }),
-//     .then((newWorkout) => {
-//       res.json(newWorkout);
-//     })
-//     .catch((err) => {
-//       res.status(400).json(err);
-//     });
-// });
-
-
-
 
 router.put("/workouts/:id", async (req, res) => {
   Workout.findByIdAndUpdate(
