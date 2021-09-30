@@ -21,18 +21,20 @@ const API = {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
     });
-
+      
     const json = await res.json(data);
+    
 
     return json;
   },
   async createWorkout(data = {}) {
-    const res = await fetch("/api/workouts", {
+    
+    const res = await fetch("/api/workouts/", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-Type": "application/json" }
     });
-
+      console.log(data);
     const json = await res.json();
 
     return json;

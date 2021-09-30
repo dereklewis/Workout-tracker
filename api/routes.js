@@ -3,7 +3,7 @@ const router = express.Router();
 const Workout = require("../models/workout");
 
 router.post("/workouts/", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   Workout.create({})
 
     .then((workouts) => {
@@ -16,12 +16,15 @@ router.post("/workouts/", async (req, res) => {
 });
 
 router.put("/workouts/:id", async (req, res) => {
-  console.log(req.body);
+  console.log(req.body + "19");
+  console.log(req.params);
   Workout.findByIdAndUpdate(
     { _id: req.params.id },
     { $push: { exercises: req.body } },
     { new: true }
+    
   )
+  
   .then((result) => {
     console.log(result);
     res.json(result);
